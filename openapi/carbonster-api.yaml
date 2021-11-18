@@ -1,0 +1,23 @@
+openapi: 3.0.0
+info:
+  title: Carbonster API
+  description:
+    This API provides gas data from other APIs
+  version: 1.0.0
+servers:
+  - url: /carbonster/v1
+paths:
+  /hello:
+    get:
+      summary: Returns helloworld text.
+      operationId: controller.get_hello
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: string
+
+# components:
+#   schemas:

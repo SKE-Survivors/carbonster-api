@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*~
+tmp
+.DS_Store
+.coverage
+htmlcov/*
+*.swp
+env/
+autogen/
+*-sol.*
+.vscode/

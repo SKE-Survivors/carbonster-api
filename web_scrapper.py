@@ -46,6 +46,9 @@ sql_q = """insert into population (country, population, year)
              values(%s, %s, %s)"""
 connect = db()
 cursor = connect.cursor()
+
+cursor.execute("DELETE FROM population")
+
 cursor.executemany(sql_q, insert_arr)
 connect.commit()
 

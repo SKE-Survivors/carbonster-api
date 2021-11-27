@@ -18,14 +18,14 @@ def find_min(arr):
     min = arr[0]
     for i in range(0, len(arr)):       
         if(arr[i] < min):    
-            min = arr[i];   
+            min = arr[i]
     return min 
     
 def find_max(arr):
     max = arr[0]
     for i in range(0, len(arr)):       
         if(arr[i] > max):    
-            max = arr[i];   
+            max = arr[i]   
     return max 
 
 def find_stat(arr):
@@ -40,25 +40,25 @@ def find_stat(arr):
 def get_air(country):
     with db_cursor() as cs:
         cs.execute("""
-            SELECT c.country, c.carbon_avg, o.ozone_avg, m.methane_avg
+            SELECT DISTINCT c.country, c.carbon_avg, o.ozone_avg, m.methane_avg, c.start
             FROM carbontest AS c
             INNER JOIN ozonetest AS o 
-            ON c.start >= o.start and c.start <= o.end
+            ON c.start = o.start and o.country = c.country
             INNER JOIN mettest AS m
-            ON o.start >= m.start and o.start <= m.end
-            WHERE c.country = %s       
+            ON o.start = m.start and o.country = m.country
+            WHERE c.country = %s    
             """, [country])
-        result = cs.fetchone()
+        result = cs.fetchall()
     if result:
-        country, co, me, oz = result
-        return models.Quality(*result)
+        # country, co, me, oz = result
+        return [models.Quality(row[0], row[1], row[2], row[3], row[4].date()) for row in result]
     else:
         abort(404)
         
 def get_air_statistic_carbon(country):
     curr_month = datetime.now().month
     curr_year = datetime.now().year
-    with db_cursor as cs:
+    with db_cursor() as cs:
         cs.execute("""
             SELECT *
             FROM carbontest c 
@@ -70,14 +70,15 @@ def get_air_statistic_carbon(country):
         daily = []
         for element in result:
             daily.append(element[2])
-                    
-        result = [models.Statistic(country, find_stat(daily))]
+        
+        c_min, c_max, avg, c_range, var, sd = find_stat(daily)
+        result = [models.Statistic(country, c_min, c_max, avg, c_range, var, sd)]
         return result
     
 def get_air_statistic_methane(country):
     curr_month = datetime.now().month
     curr_year = datetime.now().year
-    with db_cursor as cs:
+    with db_cursor() as cs:
         cs.execute("""
             SELECT *
             FROM mettest c 
@@ -89,14 +90,15 @@ def get_air_statistic_methane(country):
         daily = []
         for element in result:
             daily.append(element[2])
-                    
-        result = [models.Statistic(country, find_stat(daily))]
+            
+        c_min, c_max, avg, c_range, var, sd = find_stat(daily)
+        result = [models.Statistic(country, c_min, c_max, avg, c_range, var, sd)]
         return result
     
 def get_air_statistic_ozone(country):
     curr_month = datetime.now().month
     curr_year = datetime.now().year
-    with db_cursor as cs:
+    with db_cursor() as cs:
         cs.execute("""
             SELECT *
             FROM ozonetest c 
@@ -108,12 +110,13 @@ def get_air_statistic_ozone(country):
         daily = []
         for element in result:
             daily.append(element[2])
-            
-        result = [models.Statistic(country, find_stat(daily))]
+        
+        c_min, c_max, avg, c_range, var, sd = find_stat(daily)
+        result = [models.Statistic(country, c_min, c_max, avg, c_range, var, sd)]
         return result
 
 def get_emission(country):
-    with db_cursor as cs:
+    with db_cursor() as cs:
         cs.execute("""
             SELECT c.country, c.carbonIntensity
             FROM carbonIntensitytest c
@@ -127,7 +130,8 @@ def get_emission(country):
         abort(404)
 
 def get_emission_per_person(country):
-    with db_cursor as cs:
+    # exec(open("web_scrapper.py").read())
+    with db_cursor() as cs:
         cs.execute("""
             SELECT c.code, p.population, ci.carbonIntensity
             FROM code c
@@ -145,12 +149,13 @@ def get_emission_per_person(country):
     else:
         abort(404)
     
-def get_correlation_carbon(country):
+def get_correlation_carbon():
     curr_month = datetime.now().month
     curr_year = datetime.now().year
-    with db_cursor as cs:
+    # exec(open("web_scrapper.py").read())
+    with db_cursor() as cs:
         cs.execute("""
-            SELECT c.code, p.population, ct.carbon_avg
+            SELECT c.code, p.population, SUM(ct.carbon_avg)
             FROM code c
             INNER JOIN population p
             ON c.country = p.country
@@ -158,14 +163,14 @@ def get_correlation_carbon(country):
             ON ct.country = c.code
             WHERE MONTH(ct.end) = %s 
             AND YEAR(ct.end) = %s 
-            WHERE c.code = %s
-            """, [curr_month, curr_year, country])
+            GROUP BY c.code, p.population
+            """, [curr_month, curr_year])
         result = cs.fetchall()
-        pop = result[-1][1]
-        daily = []
-        for element in result:
-            daily.append(element[2])
-        car = sum(daily)
-        corr = statistics.correlation(pop, car)    
-        result = [models.Correlation(country, corr)]
+        
+        # car = sum(daily)
+        # corr = statistics.correlation(pop, car)
+        # corr = covariance(pop, daily)/(statistics.stdev(pop)*statistics.stdev(daily))
+        
+        result = [models.Correlation(result)]  
+        # result = [models.Correlation()]
         return result

@@ -1,5 +1,4 @@
 import sys
-import os
 
 from config import OPENAPI_AUTOGEN_DIR
 

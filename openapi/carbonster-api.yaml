@@ -27,6 +27,26 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Quality'
+  /airQuality/TH/{province}:
+    parameters:
+    - name: province
+      description: Bangkok, Narathiwat, KhonKaen, Rayong, ChiangMai
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns the average air quality of specified province in Thailand
+      operationId: controller.get_th_air
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quality'
   /carbonmonoxide/statistic/{country}:
     parameters:
     - name: country
@@ -145,7 +165,7 @@ components:
     Quality:
       type: object
       properties:
-        country:
+        location:
           type: string
         carbonmonoxide:
           type: number

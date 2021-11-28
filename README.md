@@ -24,7 +24,7 @@ $ python -m openapi_server
 
 run [app.py](app.py)
 
-testing: go to <http://localhost:8080/carbonster/v1/ui>
+testing: go to <http://localhost:8000/carbonster/v1/ui>
 
 in another terminal
 

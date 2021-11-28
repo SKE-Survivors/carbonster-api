@@ -5,81 +5,92 @@
   <meta charset="utf-8">
   <title>Gas Chart</title>
   <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
 
-<body>
+<body style="text-align: center;">
+  <h1 id="title"></h1>
   <div id="chart" style="width:100%;height:75vh;"></div>
-  <!-- <script>
-    async function createChart() {
-      var resp = await fetch('http://localhost:3000/graphql', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-        },
-        body: JSON.stringify({
-          query: `
-            {
-              basins {
-                name
-                avgMonthlyRainfalls {
-                  amount
-                  month
-                }
-              }
-            }`
-        })
-      });
-      var json = await resp.json();
-      var table = json.data;
 
-      var data = [
-        {
-          x: table.basins[0].avgMonthlyRainfalls.map(row => row.month),
-          y: table.basins[0].avgMonthlyRainfalls.map(row => row.amount),
-          type: 'line',
-          name: table.basins[0].name,
-        },
-        {
-          x: table.basins[1].avgMonthlyRainfalls.map(row => row.month),
-          y: table.basins[1].avgMonthlyRainfalls.map(row => row.amount),
-          type: 'line',
-          name: table.basins[1].name,
-        },
-        {
-          x: table.basins[2].avgMonthlyRainfalls.map(row => row.month),
-          y: table.basins[2].avgMonthlyRainfalls.map(row => row.amount),
-          type: 'line',
-          name: table.basins[2].name,
-        },
-        {
-          x: table.basins[3].avgMonthlyRainfalls.map(row => row.month),
-          y: table.basins[3].avgMonthlyRainfalls.map(row => row.amount),
-          type: 'line',
-          name: table.basins[3].name,
-        },
-        {
-          x: table.basins[4].avgMonthlyRainfalls.map(row => row.month),
-          y: table.basins[4].avgMonthlyRainfalls.map(row => row.amount),
-          type: 'line',
-          name: table.basins[4].name,
-        }
-      ];
+  <script>
+    var url = new URL(window.location.href)
+    var code = url.searchParams.get("code")
+    var isThai = code.length != 2
+    var title = url.searchParams.get("title")
+    document.getElementById("title").innerHTML = title
+    var endPoint = isThai ? '/airQuality/TH/{code}' : '/airQuality/{code}'
 
-      var layout = {
-        title: 'Average Monthly Rainfalls for Ping River Basin',
-        xaxis: {
-          title: 'Month'
-        },
-        yaxis: {
-          title: 'Monthly Rainfall (mm)',
-          range: [0, 500]
-        }
-      };
-      var config = { responsive: true };
-      Plotly.newPlot("chart", data, layout, config);
-    }
-    createChart();
-  </script> -->
+    // async function createChart() {
+    //   var resp = await fetch('http://localhost:3000/'+endPoint, {
+    //     method: 'POST',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //       'Accept': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //       query: `
+    //         {
+    //           basins {
+    //             name
+    //             avgMonthlyRainfalls {
+    //               amount
+    //               month
+    //             }
+    //           }
+    //         }`
+    //     })
+    //   });
+    //   var json = await resp.json();
+    //   var table = json.data;
+
+    //   var data = [
+    //     {
+    //       x: table.basins[0].avgMonthlyRainfalls.map(row => row.month),
+    //       y: table.basins[0].avgMonthlyRainfalls.map(row => row.amount),
+    //       type: 'line',
+    //       name: table.basins[0].name,
+    //     },
+    //     {
+    //       x: table.basins[1].avgMonthlyRainfalls.map(row => row.month),
+    //       y: table.basins[1].avgMonthlyRainfalls.map(row => row.amount),
+    //       type: 'line',
+    //       name: table.basins[1].name,
+    //     },
+    //     {
+    //       x: table.basins[2].avgMonthlyRainfalls.map(row => row.month),
+    //       y: table.basins[2].avgMonthlyRainfalls.map(row => row.amount),
+    //       type: 'line',
+    //       name: table.basins[2].name,
+    //     },
+    //     {
+    //       x: table.basins[3].avgMonthlyRainfalls.map(row => row.month),
+    //       y: table.basins[3].avgMonthlyRainfalls.map(row => row.amount),
+    //       type: 'line',
+    //       name: table.basins[3].name,
+    //     },
+    //     {
+    //       x: table.basins[4].avgMonthlyRainfalls.map(row => row.month),
+    //       y: table.basins[4].avgMonthlyRainfalls.map(row => row.amount),
+    //       type: 'line',
+    //       name: table.basins[4].name,
+    //     }
+    //   ];
+
+    //   var layout = {
+    //     title: 'Average Monthly Rainfalls for Ping River Basin',
+    //     xaxis: {
+    //       title: 'Month'
+    //     },
+    //     yaxis: {
+    //       title: 'Monthly Rainfall (mm)',
+    //       range: [0, 500]
+    //     }
+    //   };
+    //   var config = { responsive: true };
+    //   Plotly.newPlot("chart", data, layout, config);
+    // }
+    // createChart();
+
+  </script>
 </body>
 
 </html>

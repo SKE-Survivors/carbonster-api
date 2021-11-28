@@ -9,87 +9,122 @@
 
 <body style="text-align: center;">
   <h1 id="title"></h1>
+  <h3 id="error"></h3>
+
   <div id="chart" style="width:100%;height:75vh;"></div>
 
   <script>
     var url = new URL(window.location.href)
     var code = url.searchParams.get("code")
-    var isThai = code.length != 2
+    var inThai = code.length != 2
     var title = url.searchParams.get("title")
     document.getElementById("title").innerHTML = title
-    var endPoint = isThai ? '/airQuality/TH/{code}' : '/airQuality/{code}'
 
-    // async function createChart() {
-    //   var resp = await fetch('http://localhost:3000/'+endPoint, {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //       'Accept': 'application/json',
-    //     },
-    //     body: JSON.stringify({
-    //       query: `
-    //         {
-    //           basins {
-    //             name
-    //             avgMonthlyRainfalls {
-    //               amount
-    //               month
-    //             }
-    //           }
-    //         }`
-    //     })
-    //   });
-    //   var json = await resp.json();
-    //   var table = json.data;
+    if (inThai) {
+      var body = JSON.stringify({
+        query: `
+            {
+              airQualityTH(province: "${code}") {
+                date
+                carbonmonoxide
+                methane
+                ozone
+              }
+            }`
+      })
+    } else {
+      var body = JSON.stringify({
+        query: `
+            {
+              airQuality(country: "${code}") {
+                date
+                carbonmonoxide
+                methane
+                ozone
+              }
+            }`
+      })
+    }
 
-    //   var data = [
-    //     {
-    //       x: table.basins[0].avgMonthlyRainfalls.map(row => row.month),
-    //       y: table.basins[0].avgMonthlyRainfalls.map(row => row.amount),
-    //       type: 'line',
-    //       name: table.basins[0].name,
-    //     },
-    //     {
-    //       x: table.basins[1].avgMonthlyRainfalls.map(row => row.month),
-    //       y: table.basins[1].avgMonthlyRainfalls.map(row => row.amount),
-    //       type: 'line',
-    //       name: table.basins[1].name,
-    //     },
-    //     {
-    //       x: table.basins[2].avgMonthlyRainfalls.map(row => row.month),
-    //       y: table.basins[2].avgMonthlyRainfalls.map(row => row.amount),
-    //       type: 'line',
-    //       name: table.basins[2].name,
-    //     },
-    //     {
-    //       x: table.basins[3].avgMonthlyRainfalls.map(row => row.month),
-    //       y: table.basins[3].avgMonthlyRainfalls.map(row => row.amount),
-    //       type: 'line',
-    //       name: table.basins[3].name,
-    //     },
-    //     {
-    //       x: table.basins[4].avgMonthlyRainfalls.map(row => row.month),
-    //       y: table.basins[4].avgMonthlyRainfalls.map(row => row.amount),
-    //       type: 'line',
-    //       name: table.basins[4].name,
-    //     }
-    //   ];
+    async function createChart() {
+      var resp = await fetch('http://localhost:3000/graphql', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: body
+      });
+      var json = await resp.json();
+      var table = json.data;
+      // console.log(table)
 
-    //   var layout = {
-    //     title: 'Average Monthly Rainfalls for Ping River Basin',
-    //     xaxis: {
-    //       title: 'Month'
-    //     },
-    //     yaxis: {
-    //       title: 'Monthly Rainfall (mm)',
-    //       range: [0, 500]
-    //     }
-    //   };
-    //   var config = { responsive: true };
-    //   Plotly.newPlot("chart", data, layout, config);
-    // }
-    // createChart();
+      if (inThai) {
+        if (table.airQualityTH == null) {
+          document.getElementById("error").innerHTML = "Still No Data"
+          return;
+        }
+        var data = [
+          {
+            x: table.airQualityTH.map(row => row.date),
+            y: table.airQualityTH.map(row => row.carbonmonoxide),
+            type: 'line',
+            name: "carbonmonoxide",
+          },
+          {
+            x: table.airQualityTH.map(row => row.date),
+            y: table.airQualityTH.map(row => row.methane),
+            type: 'line',
+            name: "methane",
+          },
+          {
+            x: table.airQualityTH.map(row => row.date),
+            y: table.airQualityTH.map(row => row.ozone),
+            type: 'line',
+            name: "ozone",
+          }
+        ];
+      } else {
+        if (table.airQuality == null) {
+          document.getElementById("error").innerHTML = "Still No Data"
+          return;
+        }
+        var data = [
+          {
+            x: table.airQuality.map(row => row.date),
+            y: table.airQuality.map(row => row.carbonmonoxide),
+            type: 'line',
+            name: "carbonmonoxide",
+          },
+          {
+            x: table.airQuality.map(row => row.date),
+            y: table.airQuality.map(row => row.methane),
+            type: 'line',
+            name: "methane",
+          },
+          {
+            x: table.airQuality.map(row => row.date),
+            y: table.airQuality.map(row => row.ozone),
+            type: 'line',
+            name: "ozone",
+          }
+        ];
+      }
 
+      var layout = {
+        title: 'Average Gas Volume for ' + title,
+        xaxis: {
+          title: 'Date'
+        },
+        yaxis: {
+          title: 'Gas Volume (mol/m2)',
+          range: [0, .5]
+        }
+      };
+      var config = { responsive: true };
+      Plotly.newPlot("chart", data, layout, config);
+    }
+    createChart();
   </script>
 </body>
 

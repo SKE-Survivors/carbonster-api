@@ -195,15 +195,12 @@ components:
     Correlation:
       type: object
       properties:
-        correlation:
-          type: object
-          properties:
-            country:
-              type: string
-            population:
-              type: string
-            carbonintensity:
-              type: number
+        country:
+          type: string
+        population:
+          type: string
+        carbonintensity:
+          type: number
     Emission:
       type: object
       properties:

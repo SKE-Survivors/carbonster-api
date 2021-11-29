@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>CO2 correlation</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script> -->
+</head>
+
+<body>
+
+    <script>
+        async function createChart() {
+            var resp = await fetch('http://localhost:3000/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: `
+                    {
+                      carbonmonoxideCorrelation {
+                        carbonintensity
+                        country
+                        population
+                      }
+                    }`
+                })
+            });
+    var json = await resp.json();
+    var pairs = json.data;
+    
+    const labels = [
+        'India',
+        'United State',
+        'Japan',
+        'Thailand',
+        'Great Britain',
+        'Australia',
+    ];
+
+    // const titleTooltip = (tooltipItems) => {
+        
+    //     for (let i = 0; i < labels.length; i++) {
+    //         if (tooltipItems[i] == i) {
+    //             return labels[i]
+    //         }
+    //     }
+    // }
+    var inp = pairs.carbonmonoxideCorrelation[0].population;
+    var inc = pairs.carbonmonoxideCorrelation[0].carbonintensity;
+    var usp = pairs.carbonmonoxideCorrelation[1].population;
+    var usc = pairs.carbonmonoxideCorrelation[1].carbonintensity;
+    var jpp = pairs.carbonmonoxideCorrelation[2].population;
+    var jpc = pairs.carbonmonoxideCorrelation[2].carbonintensity;
+    var thp = pairs.carbonmonoxideCorrelation[3].population;
+    var thc = pairs.carbonmonoxideCorrelation[3].carbonintensity;
+    var gbp = pairs.carbonmonoxideCorrelation[4].population;
+    var gbc = pairs.carbonmonoxideCorrelation[4].carbonintensity;
+    var aup = pairs.carbonmonoxideCorrelation[5].population;
+    var auc = pairs.carbonmonoxideCorrelation[5].carbonintensity;
+
+    var data = {
+        datasets: [{
+            label: 'CO2 correlation',
+            labels: [
+                "India",
+                "United State",
+                "Japan",
+                "Thailand",
+                "Great Britain",
+                "Australia"
+            ],
+            data: [{
+                x: inp,
+                y: inc
+            }, 
+            {
+                x: usp,
+                y: usc
+            },
+            {
+                x: jpp,
+                y: jpc
+            },
+            {
+                x: thp,
+                y: thc
+            },
+            {
+                x: gbp,
+                y: gbc
+            },
+            {
+                x: aup,
+                y: auc
+            }],
+            backgroundColor: 'rgb(255,99,132)'
+        }]
+        
+    };
+
+    const config = {
+                type: 'scatter',
+                data: data,
+                options: {
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            position: 'bottom',
+                            title: {
+                                text: 'population',
+                                display: true
+                            }
+                        },
+                        y: {
+                            title: {
+                                text: 'carbon emission',
+                                display: true
+                            }
+                        }
+                    },
+                    radius: 5,
+                    plugins: {
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    var label = tooltipItem.dataset.labels[tooltipItem.dataIndex];
+                                    return label + " (" + tooltipItem.parsed.x + ", " + tooltipItem.parsed.y + ")";
+                                }
+                            }
+                        }
+                    }               
+                }
+            };
+
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+
+        
+        document.getElementById('in').innerText = inp;
+        document.getElementById('inc').innerText = inc;
+        document.getElementById('us').innerText = usp;
+        document.getElementById('usc').innerText = usc;
+        document.getElementById('jp').innerText = jpp;
+        document.getElementById('jpc').innerText = jpc;
+        document.getElementById('th').innerText = thp;
+        document.getElementById('thc').innerText = thc;
+        document.getElementById('gb').innerText = gbp;
+        document.getElementById('gbc').innerText = gbc;
+        document.getElementById('au').innerText = aup;
+        document.getElementById('auc').innerText = auc;
+    }
+    createChart()
+    </script>
+
+    <div>
+        <h2>CO2 Correlation</h2>
+    </div>
+    <div class="row" style="margin-top: 5%; width: 100%;">
+        <div class="col-4" style="margin-left: 2%;">
+            <table>
+                <tr>
+                    <th>Country</th>
+                    <th>Population</th>
+                    <th>Carbon Intensity</th>
+                </tr>
+                <tr>
+                    <td>
+                        India
+                    </td>
+                    <td id="in"></td>
+                    <td id="inc"></td>
+                </tr>
+                <tr>
+                    <td>
+                        United State
+                    </td>
+                    <td id="us"></td>
+                    <td id="usc"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Japan
+                    </td>
+                    <td id="jp"></td>
+                    <td id="jpc"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Thailand
+                    </td>
+                    <td id="th"></td>
+                    <td id="thc"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Great Britain
+                    </td>
+                    <td id="gb"></td>
+                    <td id="gbc"></td>
+                </tr>
+                <tr>
+                    <td>
+                        Australia
+                    </td>
+                    <td id="au"></td>
+                    <td id="auc"></td>
+                </tr>
+            </table>
+        </div>
+        <div class="col">
+            <canvas id="myChart" ></canvas>
+        </div>
+    </div>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

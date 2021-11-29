@@ -214,5 +214,4 @@ def get_correlation_carbon():
             GROUP BY c.code, p.population
             """, [curr_month, curr_year])
         result = cs.fetchall()
-        result = [models.Correlation(result)]
-        return result
+        return [models.Correlation(row[0], row[1], row[2]) for row in result]

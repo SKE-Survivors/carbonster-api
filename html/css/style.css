@@ -1092,6 +1092,14 @@ img {
   height: 49px;
 }
 
+.graph {
+  background-image: url(../img/icons/graph.png);
+  width: 24px;
+  height: 24px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .thailand {
   background-image: url(../img/flags/thailand.png);
   width: 24px;

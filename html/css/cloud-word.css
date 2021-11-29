@@ -4,6 +4,17 @@ cloud-body {
   justify-content: center;
 }
 
+.bubble {
+  background-color: aliceblue;
+  width : calc(var(--size) * 1.8rem);
+  height: calc(var(--size) * 1.8rem);
+  border-radius: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
 ul.cloud {
   list-style: none;
   padding-left: 0;

@@ -6,9 +6,9 @@ cloud-body {
 
 .bubble {
   background-color: black;
-  border: .1rem;
+  border: 0.1rem;
   border-style: solid;
-  width : calc(var(--size) * 1.8rem);
+  width: calc(var(--size) * 1.8rem);
   height: calc(var(--size) * 1.8rem);
   border-radius: 50%;
   display: flex;

@@ -749,15 +749,15 @@ html {
   max-width: 100%;
 }
 
-/*# sourceMappingURL=custom-grid.css.map */
+/* # sourceMappingURL=custom-grid.css.map */
 
 * {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-tap-highlight-color: transparent;
-  -webkit-transition: 0.3s all;
-  -o-transition: 0.3s all;
-  transition: 0.3s all;
+  /* -webkit-transition: 0.3s all; */
+  /* -o-transition: 0.3s all; */
+  /* transition: 0.3s all; */
 }
 
 @font-face {

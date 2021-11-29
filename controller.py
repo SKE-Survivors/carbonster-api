@@ -160,6 +160,7 @@ def get_air_statistic_ozone(country):
 
 
 def get_emission(country):
+    # exec(open("web_scrapper.py").read())
     with db_cursor() as cs:
         cs.execute(
             """
@@ -175,7 +176,7 @@ def get_emission(country):
 
 
 def get_emission_per_person(country):
-    exec(open("web_scrapper.py").read())
+    # exec(open("web_scrapper.py").read())
     with db_cursor() as cs:
         cs.execute(
             """
@@ -199,7 +200,7 @@ def get_emission_per_person(country):
 def get_correlation_carbon():
     curr_month = datetime.now().month
     curr_year = datetime.now().year
-    exec(open("web_scrapper.py").read())
+    # exec(open("web_scrapper.py").read())
     with db_cursor() as cs:
         cs.execute(
             """

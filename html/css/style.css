@@ -1236,6 +1236,12 @@ img {
   margin-bottom: auto;
 }
 
+.chart-icon {
+  background-image: url(../img/svg/Bulk/Chart.svg);
+  width: 24px;
+  height: 24px;
+}
+
 .menu-toggle {
   background-image: url(../img/svg/Bulk/Menu-toggle-white.svg);
   width: 24px;

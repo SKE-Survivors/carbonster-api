@@ -38,6 +38,59 @@
   border-radius: 50%;
 }
 
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 18.4%);
+  grid-auto-rows: 100px;
+  column-gap: 10px;
+  row-gap: 1em;
+  margin-top: 1em;
+  padding-right: 0.5em;
+  padding-left: 0.5em;
+}
+
+.box1 {
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 4;
+}
+
+.box2 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.box3 {
+  grid-column-start: 4;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.box4 {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 4;
+}
+
+.box5 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.box6 {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document
@@ -707,7 +760,10 @@ html {
   transition: 0.3s all;
 }
 
-@font-face { font-family: PermanentMarker; src: url('../fonts/PermanentMarker-Regular.woff'); } 
+@font-face {
+  font-family: PermanentMarker;
+  src: url("../fonts/PermanentMarker-Regular.woff");
+}
 
 html,
 body {
@@ -2784,7 +2840,7 @@ label {
   align-items: center;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
-  padding: 24px 19px;
+  padding: 12px 9px;
   background-color: #ffffff;
   -webkit-box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
   box-shadow: 0px 15px 50px rgba(160, 163, 189, 0.1);
@@ -2828,6 +2884,10 @@ label {
 .stat-cards-icon.success {
   background-color: rgba(75, 222, 151, 0.1);
   color: #4bde97;
+}
+
+.stat-cards-info {
+  margin: auto;
 }
 
 .stat-cards-info__num {

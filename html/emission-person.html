@@ -155,8 +155,7 @@
             <main class="main users chart-page" id="skip-target">
                 <div class="container">
                     <h1>Emission per Person Dashboard</h1><br><br>
-                    <h3 id="value"></h3>
-                    <br>
+                    <h3 id="value"></h3><br>
                     <div class="cloud-body">
                         <ul class="cloud" role="navigation" aria-label="Webdev word cloud">
                             <li><a href="?" data-weight="4" id="TH">
@@ -196,11 +195,16 @@
     <script>
         var url = new URL(window.location.href)
         var value = url.searchParams.get("value")
+        if (value == null || value == "") value = "Click! to see emission value";
         document.getElementById("value").innerHTML = value
 
-        // function checkWeight(value) {
-        //     return value/0.000001
-        // }
+        function checkWeight(value) {
+            // return a number 1-9 -> 2-6
+            weight = Math.round(value * 1e7 / 37.5) + 2
+            if (weight <= 1) weight = 2
+            if (weight >= 7) weight = 6
+            return weight
+        }
 
         async function setWeight(code) {
             var resp = await fetch('http://localhost:3000/graphql', {
@@ -224,9 +228,7 @@
 
             if (table.emissionPerson != null) {
                 value = table.emissionPerson[0].emission
-                // TODO: set to 1-9
-                // console.log(checkWeight(value))
-                // document.getElementById(code).setAttribute("data-weight", "1")
+                document.getElementById(code).setAttribute("data-weight", checkWeight(value))
                 document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4))
             } else {
                 document.getElementById(code).setAttribute("href", "?value=None")

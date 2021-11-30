@@ -1616,11 +1616,17 @@
             });
             var json = await resp.json();
             var table = json.data;
-            console.log(table)
+            // console.log(table)
+            
+            if (table.carbonmonoxideStatistic == null || table.methaneStatistic == null || table.ozoneStatistic == null) {
+                document.getElementById(code).style.display = "none"
+                return;
+            }
+
             var CO = table.carbonmonoxideStatistic[0]
             var CH4 = table.methaneStatistic[0]
             var O3 = table.ozoneStatistic[0]
-
+            
             var chartCO = c3.generate({
                 bindto: '#chartCO' + code,
                 data: { json: { mean: CO.mean }, type: 'gauge' },

@@ -158,62 +158,50 @@
             <main class="main users chart-page" id="skip-target">
                 <div class="container">
                     <h1>CO2 Correlation</h1><br><br>
-                    <div class="row" style="margin-top: 5%; width: 100%;">
-                        <div class="col-4" style="margin-left: 2%;">
-                            <table>
-                                <tr>
-                                    <th>Country</th>
-                                    <th>Population</th>
-                                    <th>Carbon Intensity</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        India
-                                    </td>
-                                    <td id="in"></td>
-                                    <td id="inc"></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        United State
-                                    </td>
-                                    <td id="us"></td>
-                                    <td id="usc"></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Japan
-                                    </td>
-                                    <td id="jp"></td>
-                                    <td id="jpc"></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Thailand
-                                    </td>
-                                    <td id="th"></td>
-                                    <td id="thc"></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Great Britain
-                                    </td>
-                                    <td id="gb"></td>
-                                    <td id="gbc"></td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Australia
-                                    </td>
-                                    <td id="au"></td>
-                                    <td id="auc"></td>
-                                </tr>
-                            </table>
-                        </div>
-                        <div class="col">
-                            <canvas id="myChart"></canvas>
-                        </div>
-                    </div>
+                    <div style="background-color: white;"><canvas id="myChart"></canvas></div>
+                    <br>
+                    <table class="table" style="background-color: white;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Country</th>
+                                <th scope="col">Population</th>
+                                <th scope="col">Carbon Intensity</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">India</th>
+                                <td id="in"></td>
+                                <td id="inc"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">United State</th>
+                                <td id="us"></td>
+                                <td id="usc"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Japan</th>
+                                <td id="jp"></td>
+                                <td id="jpc"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Thailand</th>
+                                <td id="th"></td>
+                                <td id="thc"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Great Britain</th>
+                                <td id="gb"></td>
+                                <td id="gbc"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Australia</th>
+                                <td id="au"></td>
+                                <td id="auc"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </main>
         </div>

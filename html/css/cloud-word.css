@@ -82,13 +82,13 @@ ul[data-show-value] a::after {
 }
 
 ul.cloud li:nth-child(2n + 1) a {
-  --color: rgb(189, 255, 189);
+  --color: rgb(244, 255, 148);
 }
 ul.cloud li:nth-child(3n + 1) a {
-  --color: rgb(167, 167, 255);
+  --color: rgb(132, 132, 255);
 }
 ul.cloud li:nth-child(4n + 1) a {
-  --color: rgb(255, 175, 175);
+  --color: rgb(247, 141, 141);
 }
 
 ul.cloud a:focus {

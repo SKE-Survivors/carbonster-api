@@ -46,7 +46,7 @@ def get_air(country):
     with db_cursor() as cs:
         cs.execute(
             """
-            SELECT DISTINCT c.country, c.carbon_avg, o.ozone_avg, m.methane_avg, c.start
+            SELECT DISTINCT c.country, c.carbon_avg, m.methane_avg, o.ozone_avg, c.start
             FROM carbontest AS c
             INNER JOIN ozonetest AS o
             ON c.start = o.start and o.country = c.country

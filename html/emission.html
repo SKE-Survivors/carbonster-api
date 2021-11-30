@@ -14,8 +14,8 @@
 
     <link rel="stylesheet" href="css/style.css">
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
@@ -159,7 +159,8 @@
                 <div class="container">
                     <h1>Carbon Emission</h1><br><br>
                     <h3 id="error"></h3>
-                    <canvas id="myChart" style="background-color: white; padding: 1%;"></canvas>
+                    <h3 id="test value"></h3>
+                    <canvas id="myChart" style="background-color: rgb(255, 255, 255); padding: 1%;"></canvas>
 
                     <!-- <div class="row" style="margin-top: 5%; width: 100%;">
                         <div class="col-4" style="margin-left: 2%;"></div>
@@ -175,7 +176,7 @@
     <script>
         async function getJson(code) {
 
-            var resp = await fetch('http://localhost:3000/graphql', {
+            const resp = await fetch('http://localhost:3000/graphql', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -190,14 +191,14 @@
                     }`
                 })
             });
-            var json = await resp.json();
-            var table = json.data;
+            const json = await resp.json();
+            const table = json.data;
             return table.emission[0].emission;
         }
 
         async function createChart() {
 
-            var labels = [
+            const labels = [
                 "Thailand",
                 "Japan",
                 "Korea",
@@ -209,21 +210,44 @@
                 "India"
             ]
 
-            var data = {
+            parseint(getJson("TH"))
+            const data = {
                 labels: labels,
                 datasets: [{
-                    label: 'Carbon intensity',
+                    label: "Thailand",
+                    // data: [
+                    //     getJson("TH"),
+                    //     getJson("JP"),
+                    //     getJson("KR"),
+                    //     getJson("TW"),
+                    //     getJson("US"),
+                    //     getJson("AU"),
+                    //     getJson("GB"),
+                    //     getJson("RU"),
+                    //     getJson("IN")
+                    // ],
                     data: [
-                        getJson("TH"),
-                        getJson("JP"),
-                        getJson("KR"),
-                        getJson("TW"),
-                        getJson("US"),
-                        getJson("AU"),
-                        getJson("GB"),
-                        getJson("RU"),
-                        getJson("IN")
-                    ]
+                        1,
+                        0.3,
+                        0.3,
+                        0.4,
+                        0.5,
+                        0.6,
+                        0.7,
+                        0.8,
+                        0.9
+                    ],
+                    backgroundColor: [
+                        'rgba(255, 34, 36, 0.43)',
+                        'rgba(255, 129, 64, 0.61)',
+                        'rgba(255, 205, 86, 0.61)',
+                        'rgba(112, 222, 71, 0.49)',
+                        'rgba(32, 192, 99, 0.43)',
+                        'rgba(97, 114, 207, 0.36)',
+                        'rgba(97, 184, 207, 0.36)',
+                        'rgba(155, 97, 207, 0.36)',
+                        'rgba(207, 97, 204, 0.36)'
+                        ]
                 }]
             };
 
@@ -232,7 +256,7 @@
                 data: data,
                 options: {
                     scales: {
-                        y: {
+                        x: {
                             beginAtZero: true
                         }
                     }
@@ -245,7 +269,7 @@
             );
 
         }
-        createChart()
+        createChart();
     </script>
 
     <!-- Icons library -->

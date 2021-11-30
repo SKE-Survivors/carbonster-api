@@ -170,7 +170,7 @@ def get_emission(country):
             """, [country])
         result = cs.fetchone()
     if result:
-        return models.Emission(*result)
+        return [models.Emission(*result)]
     else:
         abort(404)
 
@@ -192,7 +192,7 @@ def get_emission_per_person(country):
     if result:
         code, pop, carin = result
         per = carin / pop
-        return models.Emission(code, per)
+        return [models.Emission(code, per)]
     else:
         abort(404)
 

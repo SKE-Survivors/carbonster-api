@@ -192,7 +192,7 @@
             });
             var json = await resp.json();
             var table = json.data;
-            return table.emission;
+            return table.emission[0].emission;
         }
 
         async function createChart() {
@@ -213,17 +213,17 @@
                 labels: labels,
                 datasets: [{
                     label: 'Carbon intensity',
-                    data: [getJson("TH"),
-                    getJson("JP"),
-                    getJson("KR"),
-                    getJson("TW"),
-                    getJson("US"),
-                    getJson("AU"),
-                    getJson("GB"),
-                    getJson("RU"),
-                    getJson("IN")
+                    data: [
+                        getJson("TH"),
+                        getJson("JP"),
+                        getJson("KR"),
+                        getJson("TW"),
+                        getJson("US"),
+                        getJson("AU"),
+                        getJson("GB"),
+                        getJson("RU"),
+                        getJson("IN")
                     ]
-
                 }]
             };
 

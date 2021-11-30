@@ -198,6 +198,10 @@
         var value = url.searchParams.get("value")
         document.getElementById("value").innerHTML = value
 
+        // function checkWeight(value) {
+        //     return value/0.000001
+        // }
+
         async function setWeight(code) {
             var resp = await fetch('http://localhost:3000/graphql', {
                 method: 'POST',
@@ -219,13 +223,15 @@
             // console.log(table)
 
             if (table.emissionPerson != null) {
+                value = table.emissionPerson[0].emission
                 // TODO: set to 1-9
+                // console.log(checkWeight(value))
                 // document.getElementById(code).setAttribute("data-weight", "1")
-                document.getElementById(code).setAttribute("href", "?value=" + table.emissionPerson)
+                document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4))
             } else {
                 document.getElementById(code).setAttribute("href", "?value=None")
-                // TODO: uncomment after some country work
-                // document.getElementById(code).style.display = "None"
+                // TODO: (un)comment after some country work
+                document.getElementById(code).style.display = "None"
             }
         }
 

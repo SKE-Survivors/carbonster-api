@@ -5,15 +5,16 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <title>Carbonster API</title>
   <link rel="icon" href="img/logo.ico">
-  <script src="https://code.highcharts.com/highcharts.js"></script>
+
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
     integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
   <link rel="stylesheet" href="css/style.css">
+
+  <script src="https://code.highcharts.com/highcharts.js"></script>
 </head>
 
 <body>
@@ -39,10 +40,6 @@
         </div>
         <div class="sidebar-body">
           <ul class="sidebar-body-menu">
-            <!-- add to make sidebar working -->
-            <li>
-              <ul class="cat-sub-menu"></ul>
-            </li>
             <li>
               <a class="active" href="index.html"><span class="icon home" aria-hidden="true"></span>Home</a>
             </li>
@@ -50,8 +47,14 @@
               <a href="statistic.html"><span class="icon category" aria-hidden="true"></span>Statistic</a>
             </li>
             <li>
+              <a href="emission.html"><span class="icon chart-icon" aria-hidden="true"></span>Emission</a>
+            </li>
+            <li>
               <a href="emission-person.html"><span class="icon chart-icon" aria-hidden="true"></span>Emission per
                 Person</a>
+            </li>
+            <li>
+              <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO2 Correlation</a>
             </li>
             <li>
               <a class="show-cat-btn" href="##">
@@ -61,7 +64,6 @@
                   <span class="icon arrow-down" aria-hidden="true"></span>
                 </span>
               </a>
-              <!-- <ul class="cat-sub-menu visible"> -->
               <ul class="cat-sub-menu">
                 <li>
                   <a href="gas-chart.html?code=TH&title=Thailand">
@@ -109,7 +111,6 @@
                   <span class="icon arrow-down" aria-hidden="true"></span>
                 </span>
               </a>
-              <!-- <ul class="cat-sub-menu visible"> -->
               <ul class="cat-sub-menu">
                 <li>
                   <a href="gas-chart.html?code=Bangkok&title=Bangkok"><span class="icon thailand"
@@ -133,6 +134,7 @@
                 </li>
               </ul>
             </li>
+          </ul>
         </div>
       </div>
     </aside>
@@ -166,7 +168,15 @@
             </li>
             <br>
             <li>
+              <h4><a href="emission.html">Emission</a></h4>
+            </li>
+            <br>
+            <li>
               <h4><a href="emission-person.html">Emission per Person</a></h4>
+            </li>
+            <br>
+            <li>
+              <h4><a href="carbon-corre.html">CO2 Correlation</a></h4>
             </li>
           </ul>
         </div>

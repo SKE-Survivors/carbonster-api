@@ -165,7 +165,7 @@
                         <thead class="thead-dark">
                             <tr>
                                 <th scope="col">Country</th>
-                                <th scope="col">Carbon Intensity</th>
+                                <th scope="col">Carbon Emission (ppm)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -225,10 +225,8 @@
     </div>
 
     <script>
-        var emission_data = [];
-
-        async function getJson(code) {
-
+        
+        async function createChart() {
             var resp = await fetch('http://localhost:3000/graphql', {
                 method: 'POST',
                 headers: {
@@ -238,45 +236,49 @@
                 body: JSON.stringify({
                     query: `
                     {
-                        emission(country: "${code}"){
-                            emission
+                        TH: emission(country: "TH") {
+                          emission
+                        }
+                        JP: emission(country: "JP") {
+                          emission
+                        }
+                        KR: emission(country: "KR") {
+                          emission
+                        }
+                        TW: emission(country: "TW") {
+                          emission
+                        }
+                        US: emission(country: "US") {
+                          emission
+                        }
+                        AU: emission(country: "AU") {
+                          emission
+                        }
+                        GB: emission(country: "GB") {
+                          emission
+                        }
+                        RU: emission(country: "RU") {
+                          emission
+                        }
+                        IN: emission(country: "IN") {
+                          emission
                         }
                     }`
                 })
             });
             var json = await resp.json();
             var table = json.data;
-            // console.log(emission_data);
+            console.log(table);
 
-            if (table.emission == null) {
-                emission_data.push(0);
-            }
-            
-            // return table.emission[0].emission;
-            emission_data.push(table.emission[0].emission);
-         }
-
-        function createChart() {
-            console.log(emission_data)
-
-            var TH = emission_data.first;
-            var JP = emission_data.at(1);
-            var KR = emission_data.at(2);
-            var TW = emission_data.at(3);
-            var US = emission_data.at(4);
-            var AU = emission_data.at(5);
-            var GB = emission_data.at(6);
-            var RU = emission_data.at(7);
-            var IN = emission_data.last;
-
-            // var JP = 200;
-            // var KR = 150;
-            // var TW = 300;
-            // var US = 220;
-            // var AU = 250;
-            // var GB = 266;
-            // var RU = 322;
-            // var IN = 321;
+            var TH = table.TH[0].emission;
+            var JP = table.JP[0].emission;
+            var KR = table.KR[0].emission;
+            var TW = table.TW[0].emission;
+            var US = table.US[0].emission;
+            var AU = table.AU[0].emission;
+            var GB = table.GB[0].emission;
+            var RU = table.RU[0].emission;
+            var IN = table.IN[0].emission;
 
             var labels = [
                 "Thailand",
@@ -289,40 +291,56 @@
                 "Russia",
                 "India"
             ]
-            console.log(TH);
-            console.log(IN);
-
+            
             var data = {
-                labels: labels,
-                datasets: [{
-                    label: "Thailand",
-                    // data: [TH,JP,KR,TW,US,AU,GB,RU,IN],
-                    // data: emission_data,
-
-                    data: [
-                        1,
-                        0.3,
-                        0.3,
-                        0.4,
-                        0.5,
-                        0.6,
-                        0.7,
-                        0.8,
-                        0.9
-                    ],
-
-                    backgroundColor: [
-                        'rgba(255, 34, 36, 0.43)',
-                        'rgba(255, 129, 64, 0.61)',
-                        'rgba(255, 205, 86, 0.61)',
-                        'rgba(112, 222, 71, 0.49)',
-                        'rgba(32, 192, 99, 0.43)',
-                        'rgba(97, 114, 207, 0.36)',
-                        'rgba(97, 184, 207, 0.36)',
-                        'rgba(155, 97, 207, 0.36)',
-                        'rgba(207, 97, 204, 0.36)'
-                        ]
-                }]
+                labels: ["Country"],
+                datasets: [
+                    {
+                        label: "Thailand",
+                        data: [TH],
+                        backgroundColor: 'rgba(255, 34, 36, 0.43)'
+                    },
+                    {
+                        label: "Japan",
+                        data: [JP],
+                        backgroundColor: 'rgba(255, 129, 64, 0.61)'
+                    },
+                    {
+                        label: "Korea",
+                        data: [KR],
+                        backgroundColor: 'rgba(255, 205, 86, 0.61)'
+                    },
+                    {
+                        label: "Taiwan",
+                        data: [TW],
+                        backgroundColor: 'rgba(112, 222, 71, 0.49)'
+                    },
+                    {
+                        label: "United States",
+                        data: [US],
+                        backgroundColor: 'rgba(32, 192, 99, 0.43)'
+                    },
+                    {
+                        label: "Australia",
+                        data: [AU],
+                        backgroundColor: 'rgba(97, 114, 207, 0.36)'
+                    },
+                    {
+                        label: "Great Britain",
+                        data: [GB],
+                        backgroundColor: 'rgba(97, 184, 207, 0.36)'
+                    },
+                    {
+                        label: "Russia",
+                        data: [RU],
+                        backgroundColor: 'rgba(155, 97, 207, 0.36)'
+                    },
+                    {
+                        label: "India",
+                        data: [IN],
+                        backgroundColor: 'rgba(207, 97, 204, 0.36)'
+                    }
+                ]
             };
 
             var config = {
@@ -330,12 +348,6 @@
                 data: data,
                 options: {
                     scales: {
-                        x: {
-                            title: {
-                                text: 'Country',
-                                display: true
-                            }
-                        },
                         y: {
                             beginAtZero: true,
                             title: {
@@ -363,15 +375,6 @@
             document.getElementById('in').innerText = IN;
 
         }
-        getJson("TH");
-        getJson("JP");
-        getJson("KR");
-        getJson("TW");
-        getJson("US");
-        getJson("AU");
-        getJson("GB");
-        getJson("RU");
-        getJson("IN");
         createChart();
     </script>
 

@@ -65,41 +65,41 @@
                   <span class="icon arrow-down" aria-hidden="true"></span>
                 </span>
               </a>
-              <ul class="cat-sub-menu visible">
+              <ul id="country-menu" class="cat-sub-menu">
                 <li>
-                  <a href="gas-chart.html?code=TH&title=Thailand">
+                  <a id="link-TH" href="gas-chart.html?code=TH&title=Thailand">
                     <span class="icon thailand" aria-hidden="true"></span>Thailand</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=JP&title=Japan"><span class="icon japan"
+                  <a id="link-JP" href="gas-chart.html?code=JP&title=Japan"><span class="icon japan"
                       aria-hidden="true"></span>Japan</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=KR&title=South Korea"><span class="icon south-korea"
+                  <a id="link-KR" href="gas-chart.html?code=KR&title=South Korea"><span class="icon south-korea"
                       aria-hidden="true"></span>South Korea</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=TW&title=Taiwan, Province of China"><span class="icon taiwan"
+                  <a id="link-TW" href="gas-chart.html?code=TW&title=Taiwan, Province of China"><span class="icon taiwan"
                       aria-hidden="true"></span>Taiwan</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=US&title=United States"><span class="icon united-states"
+                  <a id="link-US" href="gas-chart.html?code=US&title=United States"><span class="icon united-states"
                       aria-hidden="true"></span>United States</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=AU&title=Australia"><span class="icon australia"
+                  <a id="link-AU" href="gas-chart.html?code=AU&title=Australia"><span class="icon australia"
                       aria-hidden="true"></span>Australia</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=GB&title=United Kingdom"><span class="icon united-kingdom"
+                  <a id="link-GB" href="gas-chart.html?code=GB&title=United Kingdom"><span class="icon united-kingdom"
                       aria-hidden="true"></span>United Kingdom</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=RU&title=Russian"><span class="icon russia"
+                  <a id="link-RU" href="gas-chart.html?code=RU&title=Russian"><span class="icon russia"
                       aria-hidden="true"></span>Russian</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=IN&title=India"><span class="icon india"
+                  <a id="link-IN" href="gas-chart.html?code=IN&title=India"><span class="icon india"
                       aria-hidden="true"></span>India</a>
                 </li>
               </ul>
@@ -113,25 +113,25 @@
                   <span class="icon arrow-down" aria-hidden="true"></span>
                 </span>
               </a>
-              <ul class="cat-sub-menu visible">
+              <ul id="thai-menu" class="cat-sub-menu">
                 <li>
-                  <a href="gas-chart.html?code=Bangkok&title=Bangkok"><span class="icon thailand"
+                  <a id="link-Bangkok" href="gas-chart.html?code=Bangkok&title=Bangkok"><span class="icon thailand"
                       aria-hidden="true"></span>Bangkok</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=Narathiwat&title=Narathiwat"><span class="icon thailand"
+                  <a id="link-Narathiwat" href="gas-chart.html?code=Narathiwat&title=Narathiwat"><span class="icon thailand"
                       aria-hidden="true"></span>Narathiwat</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=KhonKaen&title=Khon Kaen"><span class="icon thailand"
+                  <a id="link-KhonKaen" href="gas-chart.html?code=KhonKaen&title=Khon Kaen"><span class="icon thailand"
                       aria-hidden="true"></span>Khon Kaen</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=Rayong&title=Rayong"><span class="icon thailand"
+                  <a id="link-Rayong" href="gas-chart.html?code=Rayong&title=Rayong"><span class="icon thailand"
                       aria-hidden="true"></span>Rayong</a>
                 </li>
                 <li>
-                  <a href="gas-chart.html?code=ChiangMai&title=Chiang Mai"><span class="icon thailand"
+                  <a id="link-ChiangMai" href="gas-chart.html?code=ChiangMai&title=Chiang Mai"><span class="icon thailand"
                       aria-hidden="true"></span>Chiang Mai</a>
                 </li>
               </ul>
@@ -170,8 +170,10 @@
     var inThai = code.length != 2;
     var title = url.searchParams.get("title");
     document.getElementById("title").innerHTML = title;
+    document.getElementById("link-"+code).classList.add("active");
 
     if (inThai) {
+      document.getElementById("thai-menu").classList.add("visible");
       var body = JSON.stringify({
         query: `
               {
@@ -184,6 +186,7 @@
               }`,
       });
     } else {
+      document.getElementById("country-menu").classList.add("visible");
       var body = JSON.stringify({
         query: `
               {

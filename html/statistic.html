@@ -165,9 +165,9 @@
             <!-- ! Main -->
             <main class="main users chart-page" id="skip-target">
                 <div class="container">
-                    <h1>Statistic Dashboard</h1><br>
-
-                    <div id="TH">
+                    <h1>Statistic Dashboard</h1><br><br>
+                    <h3 id="error">Still No Data</h3>
+                    <div id="TH" style="display: none;">
                         <h3>Thailand</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -323,7 +323,7 @@
                         </div>
                     </div>
 
-                    <div id="JP">
+                    <div id="JP" style="display: none;">
                         <h3>Japan</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -479,7 +479,7 @@
                         </div>
                     </div>
 
-                    <div id="KR">
+                    <div id="KR" style="display: none;">
                         <h3>South Korea</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -635,7 +635,7 @@
                         </div>
                     </div>
 
-                    <div id="TW">
+                    <div id="TW" style="display: none;">
                         <h3>Taiwan, Province of China</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -791,7 +791,7 @@
                         </div>
                     </div>
 
-                    <div id="US">
+                    <div id="US" style="display: none;">
                         <h3>United States</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -947,7 +947,7 @@
                         </div>
                     </div>
 
-                    <div id="AU">
+                    <div id="AU" style="display: none;">
                         <h3>Australia</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -1103,7 +1103,7 @@
                         </div>
                     </div>
 
-                    <div id="GB">
+                    <div id="GB" style="display: none;">
                         <h3>United Kingdom</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -1259,7 +1259,7 @@
                         </div>
                     </div>
 
-                    <div id="RU">
+                    <div id="RU" style="display: none;">
                         <h3>Russian</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -1415,7 +1415,7 @@
                         </div>
                     </div>
 
-                    <div id="IN">
+                    <div id="IN" style="display: none;">
                         <h3>India</h3><br>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
@@ -1616,17 +1616,19 @@
             });
             var json = await resp.json();
             var table = json.data;
-            // console.log(table)
-            
-            if (table.carbonmonoxideStatistic == null || table.methaneStatistic == null || table.ozoneStatistic == null) {
-                document.getElementById(code).style.display = "none"
+            console.log(table)
+
+            if (table.carbonmonoxideStatistic != null && table.methaneStatistic != null && table.ozoneStatistic != null) {
+                document.getElementById(code).style.display = "block";
+                document.getElementById("error").innerHTML = "";
+            } else {
                 return;
             }
 
             var CO = table.carbonmonoxideStatistic[0]
             var CH4 = table.methaneStatistic[0]
             var O3 = table.ozoneStatistic[0]
-            
+
             var chartCO = c3.generate({
                 bindto: '#chartCO' + code,
                 data: { json: { mean: CO.mean }, type: 'gauge' },

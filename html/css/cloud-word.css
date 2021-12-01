@@ -35,7 +35,7 @@ ul.cloud a {
     --size: attr(data-weight number); 
     */
   --size: 4;
-  --color: rgb(254, 173, 254);
+  --color: rgb(162, 67, 194);
   color: var(--color);
   font-size: calc(var(--size) * 0.25rem + 0.5rem);
   display: block;
@@ -82,13 +82,13 @@ ul[data-show-value] a::after {
 }
 
 ul.cloud li:nth-child(2n + 1) a {
-  --color: rgb(189, 255, 189);
+  --color: rgb(112, 195, 206);
 }
 ul.cloud li:nth-child(3n + 1) a {
-  --color: rgb(167, 167, 255);
+  --color: rgb(233, 85, 176);
 }
 ul.cloud li:nth-child(4n + 1) a {
-  --color: rgb(255, 175, 175);
+  --color: rgb(235, 175, 86);
 }
 
 ul.cloud a:focus {

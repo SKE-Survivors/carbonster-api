@@ -46,7 +46,7 @@
                             <a href="statistic.html"><span class="icon category" aria-hidden="true"></span>Statistic</a>
                         </li>
                         <li>
-                            <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO2
+                            <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO
                                 Correlation</a>
                         </li>
                         <li>
@@ -158,31 +158,31 @@
                     <h3 id="value"></h3><br>
                     <div class="cloud-body">
                         <ul class="cloud" role="navigation" aria-label="Webdev word cloud">
-                            <li><a href="?" data-weight="4" id="TH">
+                            <li><a href="?" data-weight="2" id="TH">
                                     <div class="bubble">Thailand</div>
                                 </a></li>
                             <li><a href="?" data-weight="2" id="JP">
                                     <div class="bubble">Japan</div>
                                 </a></li>
-                            <li><a href="?" data-weight="5" id="KR">
+                            <li><a href="?" data-weight="2" id="KR">
                                     <div class="bubble">South Korea</div>
                                 </a></li>
-                            <li><a href="?" data-weight="8" id="TW">
+                            <li><a href="?" data-weight="2" id="TW">
                                     <div class="bubble">Taiwan</div>
                                 </a></li>
-                            <li><a href="?" data-weight="6" id="US">
+                            <li><a href="?" data-weight="2" id="US">
                                     <div class="bubble">United States</div>
                                 </a></li>
-                            <li><a href="?" data-weight="4" id="AU">
+                            <li><a href="?" data-weight="2" id="AU">
                                     <div class="bubble">Australia</div>
                                 </a></li>
-                            <li><a href="?" data-weight="5" id="GB">
+                            <li><a href="?" data-weight="2" id="GB">
                                     <div class="bubble">United Kingdom</div>
                                 </a></li>
-                            <li><a href="?" data-weight="6" id="RU">
+                            <li><a href="?" data-weight="2" id="RU">
                                     <div class="bubble">Russian</div>
                                 </a></li>
-                            <li><a href="?" data-weight="1" id="IN">
+                            <li><a href="?" data-weight="2" id="IN">
                                     <div class="bubble">India</div>
                                 </a></li>
                         </ul>
@@ -224,12 +224,12 @@
             });
             var json = await resp.json();
             var table = json.data;
-            // console.log(table)
+            console.log(table)
 
             if (table.emissionPerson != null) {
                 value = table.emissionPerson[0].emission
                 document.getElementById(code).setAttribute("data-weight", checkWeight(value))
-                document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4))
+                document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4)+" ppm/person")
             } else {
                 document.getElementById(code).setAttribute("href", "?value=None")
                 // TODO: (un)comment after some country work

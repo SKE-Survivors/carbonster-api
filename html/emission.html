@@ -48,7 +48,7 @@
                             <a href="statistic.html"><span class="icon category" aria-hidden="true"></span>Statistic</a>
                         </li>
                         <li>
-                            <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO2
+                            <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO
                                 Correlation</a>
                         </li>
                         <li>
@@ -161,7 +161,58 @@
                     <h3 id="error"></h3>
                     <h3 id="test value"></h3>
                     <canvas id="myChart" style="background-color: rgb(255, 255, 255); padding: 1%;"></canvas>
+                    <table class="table" style="background-color: white;">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Country</th>
+                                <th scope="col">Carbon Emission (ppm)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Thailand</th>
+                                <td id="th"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Japan</th>
+                                <td id="jp"></td>
+                            </tr>
+                            
+                            <tr>
+                                <th scope="row">Korea</th>
+                                <td id="kr"></td>
+                            </tr>
 
+                            <tr>
+                                <th scope="row">Taiwan</th>
+                                <td id="tw"></td>
+                            </tr>
+                            
+                            <tr>
+                                <th scope="row">United State</th>
+                                <td id="us"></td>
+                            </tr>
+                            
+                            <tr>
+                                <th scope="row">Australia</th>
+                                <td id="au"></td>
+                            </tr>
+                            
+                            <tr>
+                                <th scope="row">Great Britain</th>
+                                <td id="gb"></td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Russia</th>
+                                <td id="ru"></td>
+                            </tr>
+
+                            <tr>
+                                <th scope="row">India</th>
+                                <td id="in"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                     <!-- <div class="row" style="margin-top: 5%; width: 100%;">
                         <div class="col-4" style="margin-left: 2%;"></div>
                         <div class="col">
@@ -185,20 +236,51 @@
                 body: JSON.stringify({
                     query: `
                     {
-                        emission(country: "${code}"){
-                            emission
+                        TH: emission(country: "TH") {
+                          emission
+                        }
+                        JP: emission(country: "JP") {
+                          emission
+                        }
+                        KR: emission(country: "KR") {
+                          emission
+                        }
+                        TW: emission(country: "TW") {
+                          emission
+                        }
+                        US: emission(country: "US") {
+                          emission
+                        }
+                        AU: emission(country: "AU") {
+                          emission
+                        }
+                        GB: emission(country: "GB") {
+                          emission
+                        }
+                        RU: emission(country: "RU") {
+                          emission
+                        }
+                        IN: emission(country: "IN") {
+                          emission
                         }
                     }`
                 })
             });
-            const json = await resp.json();
-            const table = json.data;
-            return table.emission[0].emission;
-        }
+            var json = await resp.json();
+            var table = json.data;
+            console.log(table);
 
-        async function createChart() {
+            var TH = table.TH[0].emission;
+            var JP = table.JP[0].emission;
+            var KR = table.KR[0].emission;
+            var TW = table.TW[0].emission;
+            var US = table.US[0].emission;
+            var AU = table.AU[0].emission;
+            var GB = table.GB[0].emission;
+            var RU = table.RU[0].emission;
+            var IN = table.IN[0].emission;
 
-            const labels = [
+            var labels = [
                 "Thailand",
                 "Japan",
                 "Korea",
@@ -251,22 +333,36 @@
                 }]
             };
 
-            const config = {
+            var config = {
                 type: 'bar',
                 data: data,
                 options: {
                     scales: {
-                        x: {
-                            beginAtZero: true
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                text: 'Carbon Emission (ppm)',
+                                display: true
+                            }
                         }
                     }
                 },
             };
 
-            const myChart = new Chart(
+            var myChart = new Chart(
                 document.getElementById('myChart'),
                 config
             );
+
+            document.getElementById('th').innerText = TH;
+            document.getElementById('jp').innerText = JP;
+            document.getElementById('kr').innerText = KR;
+            document.getElementById('tw').innerText = TW;
+            document.getElementById('us').innerText = US;
+            document.getElementById('au').innerText = AU;
+            document.getElementById('gb').innerText = GB;
+            document.getElementById('ru').innerText = RU;
+            document.getElementById('in').innerText = IN;
 
         }
         createChart();

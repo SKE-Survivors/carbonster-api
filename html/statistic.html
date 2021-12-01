@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Statistic</title>
+    <link rel="icon" href="img/logo.ico">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Load c3.css -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.css" integrity="sha512-cznfNokevSG7QPA5dZepud8taylLdvgr0lDqw/FEZIhluFsSwyvS81CMnRdrNSKwbsmc43LtRd2/WMQV+Z85AQ==" crossorigin="anonymous" referrerpolicy="no-referrer" /> -->
+
+    <!-- Load d3.js and c3.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.16.0/d3.min.js"
+        integrity="sha512-FHsFVKQ/T1KWJDGSbrUhTJyS1ph3eRrxI228ND0EGaEp6v4a/vGwPWd3Dtd/+9cI7ccofZvl/wulICEurHN1pg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/c3/0.7.20/c3.min.js"
+        integrity="sha512-+IpCthlNahOuERYUSnKFjzjdKXIbJ/7Dd6xvUp+7bEw0Jp2dg6tluyxLs+zq9BMzZgrLv8886T4cBSqnKiVgUw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+
+<body>
+    <div class="layer"></div>
+    <!-- ! Body -->
+    <a class="skip-link sr-only" href="#skip-target">Skip to content</a>
+    <div class="page-flex">
+        <!-- ! Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-start">
+                <div class="sidebar-head">
+                    <a href="index.html" class="logo-wrapper" title="Home">
+                        <span class="sr-only">Home</span>
+                        <span class="icon logo" aria-hidden="true"></span>
+                        <div class="logo-text">
+                            <span class="logo-title">Carbonster</span>
+                        </div>
+                    </a>
+                    <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                        <span class="sr-only">Toggle menu</span>
+                        <span class="icon menu-toggle" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="sidebar-body">
+                    <ul class="sidebar-body-menu">
+                        <li>
+                            <a href="index.html"><span class="icon home" aria-hidden="true"></span>Home</a>
+                        </li>
+                        <li>
+                            <a class="active" href="statistic.html"><span class="icon category"
+                                    aria-hidden="true"></span>Statistic</a>
+                        </li>
+                        <li>
+                            <a href="carbon-corre.html"><span class="icon star" aria-hidden="true"></span>CO
+                                Correlation</a>
+                        </li>
+                        <li>
+                            <a href="emission.html"><span class="icon chart-icon" aria-hidden="true"></span>Emission</a>
+                        </li>
+                        <li>
+                            <a href="emission-person.html"><span class="icon chart-icon"
+                                    aria-hidden="true"></span>Emission per
+                                Person</a>
+                        </li>
+                        <li>
+                            <a class="show-cat-btn" href="##">
+                                <span class="icon graph" aria-hidden="true"></span>Air Quality
+                                <span class="category__btn transparent-btn rotated" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu">
+                                <li>
+                                    <a href="gas-chart.html?code=TH&title=Thailand">
+                                        <span class="icon thailand" aria-hidden="true"></span>Thailand</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=JP&title=Japan"><span class="icon japan"
+                                            aria-hidden="true"></span>Japan</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=KR&title=South Korea"><span class="icon south-korea"
+                                            aria-hidden="true"></span>South Korea</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=TW&title=Taiwan, Province of China"><span
+                                            class="icon taiwan" aria-hidden="true"></span>Taiwan</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=US&title=United States"><span
+                                            class="icon united-states" aria-hidden="true"></span>United States</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=AU&title=Australia"><span class="icon australia"
+                                            aria-hidden="true"></span>Australia</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=GB&title=United Kingdom"><span
+                                            class="icon united-kingdom" aria-hidden="true"></span>United Kingdom</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=RU&title=Russian"><span class="icon russia"
+                                            aria-hidden="true"></span>Russian</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=IN&title=India"><span class="icon india"
+                                            aria-hidden="true"></span>India</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a class="show-cat-btn" href="##">
+                                <span class="icon graph" aria-hidden="true"></span>Thai Air Quality
+                                <span class="category__btn transparent-btn rotated" title="Open list">
+                                    <span class="sr-only">Open list</span>
+                                    <span class="icon arrow-down" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                            <ul class="cat-sub-menu">
+                                <li>
+                                    <a href="gas-chart.html?code=Bangkok&title=Bangkok"><span class="icon thailand"
+                                            aria-hidden="true"></span>Bangkok</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=Narathiwat&title=Narathiwat"><span
+                                            class="icon thailand" aria-hidden="true"></span>Narathiwat</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=KhonKaen&title=Khon Kaen"><span class="icon thailand"
+                                            aria-hidden="true"></span>Khon Kaen</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=Rayong&title=Rayong"><span class="icon thailand"
+                                            aria-hidden="true"></span>Rayong</a>
+                                </li>
+                                <li>
+                                    <a href="gas-chart.html?code=ChiangMai&title=Chiang Mai"><span class="icon thailand"
+                                            aria-hidden="true"></span>Chiang Mai</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </aside>
+        <div class="main-wrapper">
+            <!-- ! Main nav -->
+            <nav class="main-nav--bg">
+                <div class="main-nav">
+                    <div class="main-nav-end mx-4">
+                        <button class="sidebar-toggle transparent-btn" title="Menu" type="button">
+                            <span class="sr-only">Toggle menu</span>
+                            <span class="icon menu-toggle--gray" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </nav>
+            <!-- ! Main -->
+            <main class="main users chart-page" id="skip-target">
+                <div class="container">
+                    <h1>Statistic Dashboard</h1><br><br>
+                    <h3 id="error">Still No Data</h3>
+                    <div id="TH" style="display: none;">
+                        <h3>Thailand</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOTH" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOTH">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOTH">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOTH">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOTH">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOTH">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3TH" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3TH">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3TH">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3TH">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3TH">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3TH">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4TH" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4TH">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4TH">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4TH">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4TH">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4TH">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="JP" style="display: none;">
+                        <h3>Japan</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOJP" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOJP">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOJP">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOJP">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOJP">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOJP">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3JP" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3JP">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3JP">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3JP">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3JP">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3JP">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4JP" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4JP">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4JP">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4JP">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4JP">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4JP">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="KR" style="display: none;">
+                        <h3>South Korea</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOKR" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOKR">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOKR">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOKR">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOKR">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOKR">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3KR" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3KR">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3KR">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3KR">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3KR">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3KR">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4KR" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4KR">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4KR">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4KR">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4KR">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4KR">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="TW" style="display: none;">
+                        <h3>Taiwan, Province of China</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOTW" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOTW">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOTW">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOTW">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOTW">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOTW">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3TW" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3TW">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3TW">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3TW">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3TW">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3TW">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4TW" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4TW">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4TW">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4TW">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4TW">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4TW">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="US" style="display: none;">
+                        <h3>United States</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOUS" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOUS">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOUS">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOUS">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOUS">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOUS">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3US" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3US">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3US">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3US">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3US">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3US">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4US" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4US">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4US">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4US">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4US">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4US">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="AU" style="display: none;">
+                        <h3>Australia</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOAU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOAU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOAU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOAU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOAU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOAU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3AU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3AU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3AU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3AU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3AU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3AU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4AU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4AU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4AU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4AU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4AU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4AU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="GB" style="display: none;">
+                        <h3>United Kingdom</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOGB" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOGB">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOGB">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOGB">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOGB">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOGB">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3GB" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3GB">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3GB">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3GB">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3GB">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3GB">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4GB" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4GB">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4GB">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4GB">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4GB">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4GB">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="RU" style="display: none;">
+                        <h3>Russian</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCORU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCORU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCORU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCORU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCORU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCORU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3RU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3RU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3RU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3RU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3RU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3RU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4RU" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4RU">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4RU">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4RU">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4RU">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4RU">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="IN" style="display: none;">
+                        <h3>India</h3><br>
+                        <div class="row">
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Carbonmonoxide</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCOIN" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCOIN">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCOIN">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCOIN">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCOIN">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCOIN">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Ozone</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartO3IN" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxO3IN">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdO3IN">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeO3IN">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minO3IN">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceO3IN">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <h4>Methane</h4>
+                                <div class="wrapper">
+                                    <div class="box1">
+                                        <article class="stat-cards-item" id="chartCH4IN" style="padding: 0px;">
+                                            <!-- <div id="chart1"></div> -->
+                                        </article>
+                                    </div>
+                                    <div class="box2">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="maxCH4IN">None</p>
+                                                <p class="stat-cards-info__title">MAX</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box3">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="sdCH4IN">None</p>
+                                                <p class="stat-cards-info__title">SD</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box4">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="rangeCH4IN">None</p>
+                                                <p class="stat-cards-info__title">RANGE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box5">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="minCH4IN">None</p>
+                                                <p class="stat-cards-info__title">MIN</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                    <div class="box6">
+                                        <article class="stat-cards-item">
+                                            <div class="stat-cards-info">
+                                                <p class="stat-cards-info__num" id="varianceCH4IN">None</p>
+                                                <p class="stat-cards-info__title">VARIANCE</p>
+                                            </div>
+                                        </article>
+                                    </div>
+                                </div><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        async function createChart(code, id) {
+            var resp = await fetch('http://localhost:3000/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: `
+                    {
+                        carbonmonoxideStatistic(country: "${code}"){
+                            max
+                            mean
+                            min
+                            range
+                            standardDeviation
+                            variance
+                        }
+                        ozoneStatistic(country: "${code}") {
+                            max
+                            mean
+                            min
+                            range
+                            standardDeviation
+                            variance
+                        }
+                        methaneStatistic(country: "${code}") {
+                            max
+                            mean
+                            min
+                            range
+                            standardDeviation
+                            variance
+                        }
+                    }`
+                })
+            });
+            var json = await resp.json();
+            var table = json.data;
+            console.log(table)
+
+            if (table.carbonmonoxideStatistic != null && table.methaneStatistic != null && table.ozoneStatistic != null) {
+                document.getElementById(code).style.display = "block";
+                document.getElementById("error").innerHTML = "";
+            } else {
+                return;
+            }
+
+            var CO = table.carbonmonoxideStatistic[0]
+            var CH4 = table.methaneStatistic[0]
+            var O3 = table.ozoneStatistic[0]
+
+            var chartCO = c3.generate({
+                bindto: '#chartCO' + code,
+                data: { json: { mean: CO.mean }, type: 'gauge' },
+                gauge: { min: 0, max: .1 }
+            });
+            document.getElementById("rangeCO" + code).innerHTML = CO.range.toExponential(1);
+            document.getElementById("maxCO" + code).innerHTML = CO.max.toExponential(1);
+            document.getElementById("minCO" + code).innerHTML = CO.min.toExponential(1);
+            document.getElementById("sdCO" + code).innerHTML = CO.standardDeviation.toExponential(1);
+            document.getElementById("varianceCO" + code).innerHTML = CO.variance.toExponential(1);
+
+            var chartO3 = c3.generate({
+                bindto: '#chartO3' + code,
+                data: { json: { mean: O3.mean }, type: 'gauge' },
+                gauge: { min: 0, max: .5 }
+            });
+            document.getElementById("rangeO3" + code).innerHTML = O3.range.toExponential(1);
+            document.getElementById("maxO3" + code).innerHTML = O3.max.toExponential(1);
+            document.getElementById("minO3" + code).innerHTML = O3.min.toExponential(1);
+            document.getElementById("sdO3" + code).innerHTML = O3.standardDeviation.toExponential(1);
+            document.getElementById("varianceO3" + code).innerHTML = O3.variance.toExponential(1);
+
+            var chartCH4 = c3.generate({
+                bindto: '#chartCH4' + code,
+                data: { json: { mean: CH4.mean }, type: 'gauge' },
+                gauge: { min: 0, max: 5000 }
+            });
+            document.getElementById("rangeCH4" + code).innerHTML = CH4.range.toExponential(1);
+            document.getElementById("maxCH4" + code).innerHTML = CH4.max.toExponential(1);
+            document.getElementById("minCH4" + code).innerHTML = CH4.min.toExponential(1);
+            document.getElementById("sdCH4" + code).innerHTML = CH4.standardDeviation.toExponential(1);
+            document.getElementById("varianceCH4" + code).innerHTML = CH4.variance.toExponential(1);
+        }
+
+        createChart("TH");
+        createChart("JP");
+        createChart("KR");
+        createChart("TW");
+        createChart("US");
+        createChart("AU");
+        createChart("GB");
+        createChart("RU");
+        createChart("IN");
+    </script>
+
+    <!-- Icons library -->
+    <script src="plugins/feather.min.js"></script>
+    <!-- Custom scripts -->
+
+    <script src="js/script.js"></script>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>

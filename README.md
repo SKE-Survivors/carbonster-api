@@ -24,14 +24,14 @@ $ python -m openapi_server
 
 run [app.py](app.py)
 
-testing: go to <http://localhost:8080/carbonster/v1/ui>
+testing: go to <http://localhost:8000/carbonster/v1/ui>
 
 in another terminal
 
 ```bash
 # Start GraphQL IDE
 # from v2 add `--cors` to cross-origin resource sharing
-$ openapi-to-graphql --cors -u http://localhost:8080/carbonster/v1/ openapi/carbonster-api.yaml
+$ openapi-to-graphql --cors -u http://localhost:8000/carbonster/v1/ openapi/carbonster-api.yaml
 ```
 
 open [index](html/index.html) on browser

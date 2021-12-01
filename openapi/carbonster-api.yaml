@@ -7,17 +7,204 @@ info:
 servers:
   - url: /carbonster/v1
 paths:
-  /hello:
+  /airQuality/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
     get:
-      summary: Returns helloworld text.
-      operationId: controller.get_hello
+      summary: Returns the average air quality of specified country
+      operationId: controller.get_air
       responses:
         200:
           description: Success
           content:
             application/json:
               schema:
-                type: string
-
-# components:
-#   schemas:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quality'
+  /airQuality/TH/{province}:
+    parameters:
+    - name: province
+      description: Bangkok, Narathiwat, KhonKaen, Rayong, ChiangMai
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns the average air quality of specified province in Thailand
+      operationId: controller.get_th_air
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Quality'
+  /carbonmonoxide/statistic/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns the statistic of carbonmonoxide in the current month for specified country
+      operationId: controller.get_air_statistic_carbon
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Statistic'
+  /methane/statistic/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns the statistic of methane in the current month for specified country
+      operationId: controller.get_air_statistic_methane
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Statistic'
+  /ozone/statistic/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns the statistic of ozone in the current month for specified country
+      operationId: controller.get_air_statistic_ozone
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Statistic'
+  /carbonmonoxide/correlation:
+    get:
+      summary: Returns the correlation between carbonmonoxide and population of specified country
+      operationId: controller.get_correlation_carbon
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Correlation'                
+  /emission/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns emission of specified country
+      operationId: controller.get_emission
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Emission'
+  /emission/person/{country}:
+    parameters:
+    - name: country
+      description: ISO 3166 Alpha-2 code
+      in: path
+      required: true
+      schema:
+        type: string
+    get:
+      summary: Returns emission rate per person in a day of specified country
+      operationId: controller.get_emission_per_person
+      responses:
+        200:
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Emission'              
+components:
+  schemas:
+    Quality:
+      type: object
+      properties:
+        location:
+          type: string
+        carbonmonoxide:
+          type: number
+        methane:
+          type: number
+        ozone:
+          type: number
+        date:
+          type: string
+    Statistic:
+      type: object
+      properties:
+        country:
+          type: string
+        min: 
+          type: number
+        max:
+          type: number
+        mean:
+          type: number
+        range:
+          type: number
+        variance:
+          type: number
+        standardDeviation:
+          type: number
+    Correlation:
+      type: object
+      properties:
+        country:
+          type: string
+        population:
+          type: string
+        carbonintensity:
+          type: number
+    Emission:
+      type: object
+      properties:
+        country:
+          type: string
+        emission:
+          type: number

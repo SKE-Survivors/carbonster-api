@@ -173,7 +173,7 @@
         </div>
     </div>
 
-    <script>
+    <!-- <script>
         async function getJson(code) {
 
             const resp = await fetch('http://localhost:3000/graphql', {
@@ -215,28 +215,28 @@
                 labels: labels,
                 datasets: [{
                     label: "Thailand",
-                    // data: [
-                    //     getJson("TH"),
-                    //     getJson("JP"),
-                    //     getJson("KR"),
-                    //     getJson("TW"),
-                    //     getJson("US"),
-                    //     getJson("AU"),
-                    //     getJson("GB"),
-                    //     getJson("RU"),
-                    //     getJson("IN")
-                    // ],
                     data: [
-                        1,
-                        0.3,
-                        0.3,
-                        0.4,
-                        0.5,
-                        0.6,
-                        0.7,
-                        0.8,
-                        0.9
+                        getJson("TH"),
+                        getJson("JP"),
+                        getJson("KR"),
+                        getJson("TW"),
+                        getJson("US"),
+                        getJson("AU"),
+                        getJson("GB"),
+                        getJson("RU"),
+                        getJson("IN")
                     ],
+                    // data: [
+                    //     1,
+                    //     0.3,
+                    //     0.3,
+                    //     0.4,
+                    //     0.5,
+                    //     0.6,
+                    //     0.7,
+                    //     0.8,
+                    //     0.9
+                    // ],
                     backgroundColor: [
                         'rgba(255, 34, 36, 0.43)',
                         'rgba(255, 129, 64, 0.61)',
@@ -270,6 +270,57 @@
 
         }
         createChart();
+    </script> -->
+    <script>
+        async function createChart() {
+            var resp = await fetch('http://localhost:3000/graphql', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                },
+                body: JSON.stringify({
+                    query: `
+                    {
+                        emission(country: "${code}"){
+                            emission
+                        }
+                    }`
+                })
+                });
+                var json = await resp.json();
+                var pairs = json.data;
+
+                var data = {
+                    datasets: [{
+                        label: 'CO correlation',
+                        labels: [
+                            "India"
+                        ],
+                        data: [pairs.emission[0].emission],
+                        backgroundColor: 'rgb(255,99,132)'
+                    }]
+
+                };
+
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    scales: {
+                        x: {
+                            beginAtZero: true
+                        }
+                    }
+                },
+            };
+
+                const myChart = new Chart(
+                    document.getElementById('myChart'),
+                    config
+                );
+        }
+            createChart()
     </script>
 
     <!-- Icons library -->

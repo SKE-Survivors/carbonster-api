@@ -2,6 +2,8 @@
 
 An API project for gas data using OpenAPI and Python.
 
+[Presentation slide](https://docs.google.com/presentation/d/1tqXgnN5fTLf6W7n9rQZKvg_2Ky2Loyg7bioASpuxJ5o/edit?usp=sharing)
+
 ## Installation
 
 ```bash

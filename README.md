@@ -1,5 +1,11 @@
 # Carbonster API
 
+## Members
+- 6210545475 Nutta Sittipongpanich
+- 6210545505 Nanthakarn Limkool
+- 6210545611 Sahadporn Charnlertlakha
+SKE17 Kasetsart University
+
 ## Overview
 [Presentation slide](https://drive.google.com/file/d/1EMJkDjNAFis8yuj9Y0cx9-7depBLH7OU/view?usp=sharing)
 
@@ -9,24 +15,33 @@ Air pollution has become a big issue all over the world and In class assignment 
 ### Goal
 To provide information about carbon emissions and gas in Thailand and global to determine air quality in different perspective than pm2.5.
 
-## Members
+### Feature
+* 
 
-- 6210545475 Nutta Sittipongpanich
-- 6210545505 Nanthakarn Limkool
-- 6210545611 Sahadporn Charnlertlakha
+## Requirements
 
-SKE17 Kasetsart University
+### Libraries
+* OpenAPI-to-GraphQL
+* requirements.txt
 
+### Tools
+* Python 3.6++
+* Node-RED
+* KidBright 32 V1.5i
+* MQ-5 sensor
+* ADS1115
+ 
 ## Installation 
 
-Clone this github project/ download ZIP file
+* Clone this github project/ download ZIP file
+* Download `OpenAPI-to-GraphQL`
 
 ```bash
 # [if not yet have it] install OpenAPI-to-GraphQL
 $ npm install -g openapi-to-graphql-cli@2.5.0
 ```
 
-Download/add `openapi-generator-cli-4.3.1.jar` to the project
+* Download/add `openapi-generator-cli-4.3.1.jar` to the project and download required libraries
 
 ```bash
 # generate,update /autogen
@@ -54,9 +69,3 @@ $ openapi-to-graphql --cors -u http://localhost:8000/carbonster/v1/ openapi/carb
 ```
 
 Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
-
-## Members
-
-- 6210545475 Nutta Sittipongpanich
-- 6210545505 Nanthakarn Limkool
-- 6210545611 Sahadporn Charnlertlakha

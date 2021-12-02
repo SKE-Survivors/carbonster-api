@@ -35,6 +35,9 @@ Note: Bangkok* is the data collected from KidBright
 
 ### Tools
 * Python 3.6++
+* Javascript
+* Chart js
+* Plotly
 * Node-RED
 * KidBright 32 V1.5i
 * MQ-5 sensor

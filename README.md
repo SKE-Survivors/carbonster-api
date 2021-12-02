@@ -8,7 +8,7 @@
 SKE17 Kasetsart University
 
 ## Overview
-[Presentation slide](https://drive.google.com/file/d/1EMJkDjNAFis8yuj9Y0cx9-7depBLH7OU/view?usp=sharing)
+[Presentation slide](https://drive.google.com/file/d/1TIyIySlGJfEID2mTeglj6w8EQ-9uLhL-/view?usp=sharing)
 
 ### Motivation
 Air pollution has become a big issue all over the world and In class assignment about pm2.5 has become a motivation to research about carbon emission because it is a big factor of air quality measure too.

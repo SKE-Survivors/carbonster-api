@@ -96,60 +96,60 @@ Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
 
 ## Database schema
 
-| carbonIntensitytest         |
-| :-------------------------- |
-| country: varchar(20)        |
-| carbonIntensity: float      |
-| fossilFuelPercentage: float |
-| datetime: timestamp         |
+| carbonIntensitytest  |             |
+| :------------------- | :---------- |
+| country              | varchar(20) |
+| carbonIntensity      | float       |
+| fossilFuelPercentage | float       |
+| datetime             | timestamp   |
 
-| carbontest           |
-| :------------------- |
-| country: varchar(20) |
-| carbon_avg: float    |
-| start: timestamp     |
-| end: timestamp       |
+| carbontest |             |
+| :--------- | :---------- |
+| country    | varchar(20) |
+| carbon_avg | float       |
+| start      | timestamp   |
+| end        | timestamp   |
 
-| carbonTHapi           |
-| :-------------------- |
-| district: varchar(20) |
-| carbon: float         |
-| ts: timestamp         |
+| carbonTHapi |             |
+| :---------- | :---------- |
+| district    | varchar(20) |
+| carbon      | float       |
+| ts          | timestamp   |
 
-| mettest              |
-| :------------------- |
-| country: varchar(20) |
-| methane_avg: float   |
-| start: timestamp     |
-| end: timestamp       |
+| mettest     |             |
+| :---------- | :---------- |
+| country     | varchar(20) |
+| methane_avg | float       |
+| start       | timestamp   |
+| end         | timestamp   |
 
-| methaneTHapi          |
-| :-------------------- |
-| district: varchar(20) |
-| methane: float        |
-| ts: timestamp         |
+| methaneTHapi |             |
+| :----------- | :---------- |
+| district     | varchar(20) |
+| methane      | float       |
+| ts           | timestamp   |
 
-| ozonetest            |
-| :------------------- |
-| country: varchar(20) |
-| ozone_avg: float     |
-| start: timestamp     |
-| end: timestamp       |
+| ozonetest |             |
+| :-------- | :---------- |
+| country   | varchar(20) |
+| ozone_avg | float       |
+| start     | timestamp   |
+| end       | timestamp   |
 
-| ozoneTHapi            |
-| :-------------------- |
-| district: varchar(20) |
-| carbon: ozone         |
-| ts: timestamp         |
+| ozoneTHapi |             |
+| :--------- | :---------- |
+| district   | varchar(20) |
+| carbon     | ozone       |
+| ts         | timestamp   |
 
-| population           |
-| :------------------- |
-| country: varchar(20) |
-| population: int      |
-| year: int            |
+| population |             |
+| :--------- | :---------- |
+| country    | varchar(20) |
+| population | int         |
+| year       | int         |
 
-| code                 |
-| :------------------- |
-| country: varchar(20) |
-| population: int      |
-| year: int            |
+| code       |             |
+| :--------- | :---------- |
+| country    | varchar(20) |
+| population | int         |
+| year       | int         |

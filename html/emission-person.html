@@ -229,7 +229,7 @@
             if (table.emissionPerson != null) {
                 value = table.emissionPerson[0].emission
                 document.getElementById(code).setAttribute("data-weight", checkWeight(value))
-                document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4)+" ppm/person")
+                document.getElementById(code).setAttribute("href", "?value=" + value.toExponential(4)+" ppm/capita")
             } else {
                 document.getElementById(code).setAttribute("href", "?value=None")
                 // TODO: (un)comment after some country work

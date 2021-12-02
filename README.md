@@ -86,3 +86,41 @@ $ openapi-to-graphql --cors -u http://localhost:8000/carbonster/v1/ openapi/carb
 ```
 
 Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
+
+## Database schema
+
+### carbonIntensitytest
+|country: text|carbonIntensity: float|fossilFuelPercentage|datetime: timestamp|
+|---|---|---|---|
+
+### carbontest
+|country: text|carbon_avg: float|start: timestamp|end: timestamp|
+|---|---|---|---|
+
+### carbonTHapi
+|district: text|carbon: float|ts: timestamp
+|---|---|---|
+
+### mettest
+|country: text|methane_avg: float|start: timestamp|end: timestamp|
+|---|---|---|---|
+
+### methaneTHapi
+|district: text|methane: float|ts: timestamp
+|---|---|---|
+
+### ozonetest
+|country: text|ozone_avg: float|start: timestamp|end: timestamp|
+|---|---|---|---|
+
+### ozoneTHapi
+|district: text|ozone: float|ts: timestamp
+|---|---|---|
+
+### population
+|country: text|population: int|year: int
+|---|---|---|
+
+### code
+|country: text|code: text|
+|---|---|

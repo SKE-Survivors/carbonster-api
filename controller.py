@@ -93,18 +93,19 @@ def get_air_statistic_carbon(country):
     with db_cursor() as cs:
         cs.execute(
             """
-            SELECT *
+            SELECT c.carbon_avg
             FROM carbontest c
-            WHERE MONTH(c.end) = %s
-            AND YEAR(c.end) = %s
+            WHERE MONTH(c.end) = 11
+            AND YEAR(c.end) = 2021
             AND c.country = %s
-            """, [curr_month, curr_year, country])
+            """, [country])
         result = cs.fetchall()
         daily = []
         for element in result:
-            daily.append(element[2])
+            daily.append(element[0])
 
         c_min, c_max, avg, c_range, var, sd = find_stat(daily)
+        # c_min, c_max, avg, c_range, var, sd = 1,2,3,4,5,6
         result = [
             models.Statistic(country, c_min, c_max, avg, c_range, var, sd)
         ]
@@ -119,10 +120,10 @@ def get_air_statistic_methane(country):
             """
             SELECT *
             FROM mettest c
-            WHERE MONTH(c.end) = %s
-            AND YEAR(c.end) = %s
+            WHERE MONTH(c.end) = 11
+            AND YEAR(c.end) = 2021
             AND c.country = %s
-            """, [curr_month, curr_year, country])
+            """, [country])
         result = cs.fetchall()
         daily = []
         for element in result:
@@ -143,10 +144,10 @@ def get_air_statistic_ozone(country):
             """
             SELECT *
             FROM ozonetest c
-            WHERE MONTH(c.end) = %s
-            AND YEAR(c.end) = %s
+            WHERE MONTH(c.end) = 11
+            AND YEAR(c.end) = 2021
             AND c.country = %s
-            """, [curr_month, curr_year, country])
+            """, [country])
         result = cs.fetchall()
         daily = []
         for element in result:
@@ -210,9 +211,9 @@ def get_correlation_carbon():
             ON c.country = p.country
             INNER JOIN carbontest ct
             ON ct.country = c.code
-            WHERE MONTH(ct.end) = %s 
-            AND YEAR(ct.end) = %s 
+            WHERE MONTH(ct.end) = 11 
+            AND YEAR(ct.end) = 2021 
             GROUP BY c.code, p.population
-            """, [curr_month, curr_year])
+            """)
         result = cs.fetchall()
         return [models.Correlation(row[0], row[1], row[2]) for row in result]

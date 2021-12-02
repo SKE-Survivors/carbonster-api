@@ -34,6 +34,11 @@ To provide information about carbon emissions and gas in Thailand and global to 
 ## Installation 
 
 * Clone this github project/ download ZIP file
+
+```bash
+$ git clone https://github.com/SKE-survivors/carbonster-api.git
+```
+
 * Download `OpenAPI-to-GraphQL`
 
 ```bash

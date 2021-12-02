@@ -95,8 +95,7 @@ def get_air_statistic_carbon(country):
             """
             SELECT c.carbon_avg
             FROM carbontest c
-            WHERE MONTH(c.end) = 11
-            AND YEAR(c.end) = 2021
+            WHERE YEAR(c.end) = 2021
             AND c.country = %s
             """, [country])
         result = cs.fetchall()
@@ -120,8 +119,7 @@ def get_air_statistic_methane(country):
             """
             SELECT *
             FROM mettest c
-            WHERE MONTH(c.end) = 11
-            AND YEAR(c.end) = 2021
+            WHERE YEAR(c.end) = 2021
             AND c.country = %s
             """, [country])
         result = cs.fetchall()
@@ -144,8 +142,7 @@ def get_air_statistic_ozone(country):
             """
             SELECT *
             FROM ozonetest c
-            WHERE MONTH(c.end) = 11
-            AND YEAR(c.end) = 2021
+            WHERE YEAR(c.end) = 2021
             AND c.country = %s
             """, [country])
         result = cs.fetchall()
@@ -211,8 +208,7 @@ def get_correlation_carbon():
             ON c.country = p.country
             INNER JOIN carbontest ct
             ON ct.country = c.code
-            WHERE MONTH(ct.end) = 11 
-            AND YEAR(ct.end) = 2021 
+            WHERE YEAR(ct.end) = 2021 
             GROUP BY c.code, p.population
             """)
         result = cs.fetchall()

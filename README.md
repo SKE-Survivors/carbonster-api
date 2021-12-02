@@ -31,7 +31,7 @@ Note: Bangkok* is the data collected from KidBright
 
 ### Libraries
 * OpenAPI-to-GraphQL
-* requirements.txt
+* PyMySQL
 
 ### Tools
 * Python 3.6++

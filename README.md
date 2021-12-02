@@ -96,60 +96,78 @@ Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
 
 ## Database schema
 
-| carbonIntensitytest  |             |
-| :------------------- | :---------- |
-| country              | varchar(20) |
-| carbonIntensity      | float       |
-| fossilFuelPercentage | float       |
-| datetime             | timestamp   |
+### carbonIntensitytest
 
-| carbontest |             |
-| :--------- | :---------- |
-| country    | varchar(20) |
-| carbon_avg | float       |
-| start      | timestamp   |
-| end        | timestamp   |
+| Field Name           | Data Type   | Description |
+| :------------------- | :---------- | :---------- |
+| country              | varchar(20) |             |
+| carbonIntensity      | float       |             |
+| fossilFuelPercentage | float       |             |
+| datetime             | timestamp   |             |
 
-| carbonTHapi |             |
-| :---------- | :---------- |
-| district    | varchar(20) |
-| carbon      | float       |
-| ts          | timestamp   |
+### carbontest
 
-| mettest     |             |
-| :---------- | :---------- |
-| country     | varchar(20) |
-| methane_avg | float       |
-| start       | timestamp   |
-| end         | timestamp   |
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| country    | varchar(20) |             |
+| carbon_avg | float       |             |
+| start      | timestamp   |             |
+| end        | timestamp   |             |
 
-| methaneTHapi |             |
-| :----------- | :---------- |
-| district     | varchar(20) |
-| methane      | float       |
-| ts           | timestamp   |
+### carbonTHapi
 
-| ozonetest |             |
-| :-------- | :---------- |
-| country   | varchar(20) |
-| ozone_avg | float       |
-| start     | timestamp   |
-| end       | timestamp   |
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| district   | varchar(20) |             |
+| carbon     | float       |             |
+| ts         | timestamp   |             |
 
-| ozoneTHapi |             |
-| :--------- | :---------- |
-| district   | varchar(20) |
-| carbon     | ozone       |
-| ts         | timestamp   |
+### mettest
 
-| population |             |
-| :--------- | :---------- |
-| country    | varchar(20) |
-| population | int         |
-| year       | int         |
+| Field Name  | Data Type   | Description |
+| :---------- | :---------- | :---------- |
+| country     | varchar(20) |             |
+| methane_avg | float       |             |
+| start       | timestamp   |             |
+| end         | timestamp   |             |
 
-| code       |             |
-| :--------- | :---------- |
-| country    | varchar(20) |
-| population | int         |
-| year       | int         |
+### methaneTHapi
+
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| district   | varchar(20) |             |
+| methane    | float       |             |
+| ts         | timestamp   |             |
+
+### ozonetest
+
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| country    | varchar(20) |             |
+| ozone_avg  | float       |             |
+| start      | timestamp   |             |
+| end        | timestamp   |             |
+
+### ozoneTHapi
+
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| district   | varchar(20) |             |
+| carbon     | ozone       |             |
+| ts         | timestamp   |             |
+
+### population
+
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| country    | varchar(20) |             |
+| population | int         |             |
+| year       | int         |             |
+
+### code
+
+| Field Name | Data Type   | Description |
+| :--------- | :---------- | :---------- |
+| country    | varchar(20) |             |
+| population | int         |             |
+| year       | int         |             |

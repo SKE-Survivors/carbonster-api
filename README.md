@@ -14,10 +14,18 @@ SKE17 Kasetsart University
 Air pollution has become a big issue all over the world and In class assignment about pm2.5 has become a motivation to research about carbon emission because it is a big factor of air quality measure too.
 
 ### Goal
-To provide information about carbon emissions and gas in Thailand and global to determine air quality in different perspective than pm2.5.
+To provide information about carbon emissions and gas in Thailand and global to determine air quality in different perspective than PM2.5.
 
 ### Feature
-* 
+- Statistic of CO CH4 O3 in each country
+- Air quailty
+  - Average CO CH4 O3 volume of each country
+  - Average CO CH4 O3 volume in Thailand provinces (Bangkok*, Narathiwat, Khon Kaen, Rayong, Chiang Mai) 
+- Correlation between Carbon emissions and population of each country
+- Carbon emission, CO, CH4, O3 of each country
+- Carbon emission per person
+
+Note: Bangkok* is the data collected from KidBright
 
 ## Requirements
 

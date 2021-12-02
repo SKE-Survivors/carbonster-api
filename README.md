@@ -35,7 +35,7 @@ Note: Bangkok* is the data collected from KidBright
 
 ### Tools
 * Python 3.6++
-* Javascript
+* HTML CSS Javascript
 * Chart js
 * Plotly
 * Node-RED

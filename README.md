@@ -1,17 +1,32 @@
 # Carbonster API
 
-An API project for gas data using OpenAPI and Python.
+## Overview
+[Presentation slide](https://drive.google.com/file/d/1EMJkDjNAFis8yuj9Y0cx9-7depBLH7OU/view?usp=sharing)
 
-[Presentation slide](https://docs.google.com/presentation/d/1tqXgnN5fTLf6W7n9rQZKvg_2Ky2Loyg7bioASpuxJ5o/edit?usp=sharing)
+### Motivation
+Air pollution has become a big issue all over the world and In class assignment about pm2.5 has become a motivation to research about carbon emission because it is a big factor of air quality measure too.
 
-## Installation
+### Goal
+To provide information about carbon emissions and gas in Thailand and global to determine air quality in different perspective than pm2.5.
+
+## Members
+
+- 6210545475 Nutta Sittipongpanich
+- 6210545505 Nanthakarn Limkool
+- 6210545611 Sahadporn Charnlertlakha
+
+SKE17 Kasetsart University
+
+## Installation 
+
+Clone this github project/ download ZIP file
 
 ```bash
 # [if not yet have it] install OpenAPI-to-GraphQL
 $ npm install -g openapi-to-graphql-cli@2.5.0
 ```
 
-download/add `openapi-generator-cli-4.3.1.jar` to the project
+Download/add `openapi-generator-cli-4.3.1.jar` to the project
 
 ```bash
 # generate,update /autogen
@@ -22,13 +37,15 @@ $ pip install -r requirements.txt
 
 # start sever
 $ python -m openapi_server
+# If above command didn't work use this instead
+$ python app.py
 ```
 
-run [app.py](app.py)
+Run [app.py](app.py)
 
-testing: go to <http://localhost:8000/carbonster/v1/ui>
+Go to <http://localhost:8000/carbonster/v1/ui> to open Swagger
 
-in another terminal
+Then open another terminal
 
 ```bash
 # Start GraphQL IDE
@@ -36,7 +53,7 @@ in another terminal
 $ openapi-to-graphql --cors -u http://localhost:8000/carbonster/v1/ openapi/carbonster-api.yaml
 ```
 
-open [index](html/index.html) on browser
+Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
 
 ## Members
 

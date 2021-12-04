@@ -100,74 +100,74 @@ Open [index](html/index.html) on browser (YOUR/LOCAL/PATH/html/index.html)
 
 | Field Name           | Data Type   | Description |
 | :------------------- | :---------- | :---------- |
-| country              | varchar(20) |             |
-| carbonIntensity      | float       |             |
-| fossilFuelPercentage | float       |             |
-| datetime             | timestamp   |             |
+| country              | varchar(20) | country code |
+| carbonIntensity      | float       | carbon dioxide emission |
+| fossilFuelPercentage | float       | fossil fuel percentage (didn't use) |
+| datetime             | timestamp   | timestamp when getting data |
 
 ### carbontest
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| country    | varchar(20) |             |
-| carbon_avg | float       |             |
-| start      | timestamp   |             |
-| end        | timestamp   |             |
+| country    | varchar(20) | country code |
+| carbon_avg | float       | carbon monoxide emission |
+| start      | timestamp   | timestamp when at the start getting data |
+| end        | timestamp   | timestamp when at end of getting data |
 
 ### carbonTHapi
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| district   | varchar(20) |             |
-| carbon     | float       |             |
-| ts         | timestamp   |             |
+| district   | varchar(20) | district in Thailand |
+| carbon     | float       | carbon monoxide emission |
+| ts         | timestamp   | timestamp when getting data |
 
 ### mettest
 
 | Field Name  | Data Type   | Description |
 | :---------- | :---------- | :---------- |
-| country     | varchar(20) |             |
-| methane_avg | float       |             |
-| start       | timestamp   |             |
-| end         | timestamp   |             |
+| country     | varchar(20) | country code |
+| methane_avg | float       | methane emission |
+| start      | timestamp   | timestamp when at the start getting data |
+| end        | timestamp   | timestamp when at end of getting data |
 
 ### methaneTHapi
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| district   | varchar(20) |             |
-| methane    | float       |             |
-| ts         | timestamp   |             |
+| district   | varchar(20) | district in Thailand |
+| methane    | float       | methane emission |
+| ts         | timestamp   | timestamp when getting data |
 
 ### ozonetest
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| country    | varchar(20) |             |
-| ozone_avg  | float       |             |
-| start      | timestamp   |             |
-| end        | timestamp   |             |
+| country    | varchar(20) | country code |
+| ozone_avg  | float       | ozone emission |
+| start      | timestamp   | timestamp when at the start getting data |
+| end        | timestamp   | timestamp when at end of getting data |
 
 ### ozoneTHapi
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| district   | varchar(20) |             |
-| carbon     | ozone       |             |
-| ts         | timestamp   |             |
+| district   | varchar(20) | district in Thailand |
+| ozone      | float       | ozone emission |
+| ts         | timestamp   | timestamp when getting data |
 
 ### population
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| country    | varchar(20) |             |
-| population | int         |             |
-| year       | int         |             |
+| country    | varchar(20) | country code |
+| population | int         | population of that country |
+| year       | int         | year of data collection |
 
 ### code
 
 | Field Name | Data Type   | Description |
 | :--------- | :---------- | :---------- |
-| country    | varchar(20) |             |
-| population | int         |             |
-| year       | int         |             |
+| country    | varchar(20) | country code |
+| population | int         | population of that country |
+| year       | int         | year of data collection |
